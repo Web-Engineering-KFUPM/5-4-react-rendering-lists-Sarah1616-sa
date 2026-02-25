@@ -1,25 +1,29 @@
-// src/components/TaskItem.jsx
 import DueBadge from "./DueBadge";
 
 export default function TaskItem({ task, onToggle, onDelete }) {
   return (
     <li className="task">
       <label className="taskMain">
-        {/* TODO (TASK 4): Checkbox calls onToggle(task.id) on change
-            Also make it reflect task.isDone using checked={task.isDone} */}
-        <input type="checkbox" />
+        {/* TASK 4: Checkbox Interaction */}
+        <input 
+          type="checkbox" 
+          checked={task.isDone} 
+          onChange={() => onToggle(task.id)} 
+        />
 
-        {/* TODO (TASK 3): Show <DueBadge /> ONLY when task is NOT done (&&)
-            Example:
-              {!task.isDone && <DueBadge dueDate={task.dueDate} />} */}
+        {/* TASK 3: Conditional DueBadge */}
+        {!task.isDone && <DueBadge dueDate={task.dueDate} />}
 
-        {/* TODO (TASK 2): Display the task title
-            Example:
-              <span className="title">{task.title}</span> */}
+        {/* TASK 2: Title Display */}
+        <span className="title">{task.title}</span>
       </label>
 
-      {/* TODO (TASK 4): Delete button calls onDelete(task.id) on click */}
-      <button className="ghost" aria-label="Delete task">
+      {/* TASK 4: Delete Interaction */}
+      <button 
+        className="ghost" 
+        aria-label="Delete task" 
+        onClick={() => onDelete(task.id)}
+      >
         ✕
       </button>
     </li>
